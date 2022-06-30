@@ -63,11 +63,24 @@ DELETE FROM "Employees" WHERE "FullName" = 'Lazy Larry';
 ALTER TABLE "Employees" ADD COLUMN "ParkingSpot" VARCHAR(10);
 
 
+ALTER TABLE "Employees" ADD COLUMN "Id" SERIAL PRIMARY KEY;
 
+CREATE TABLE "Departments" (
+"Name" TEXT NOT NULL,
+"BuildingNumber" INT
+);
 
+ALTER TABLE "Departments" ADD COLUMN "Id" SERIAL PRIMARY KEY;
 
+ALTER TABLE "Employees" ADD COLUMN "DepartmentId" INTEGER NULL REFERENCES "Departments"("Id");
 
+INSERT INTO "Departments" ("Name", "BuildingNumber", "Id") 
+VALUES ('Finance', 1, 1);
 
+INSERT INTO "Departments" ("Name", "BuildingNumber", "Id") 
+VALUES ('Operations',2, 2);
 
+INSERT INTO "Departments" ("Name", "BuildingNumber", "Id") 
+VALUES ('Sales',3, 3);
 
 
